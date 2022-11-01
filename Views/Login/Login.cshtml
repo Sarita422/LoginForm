@@ -1,0 +1,68 @@
+﻿@using UserAuthentication.Models
+
+@model UserAuthentication.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<head>
+</head>
+<body>
+    <h2 style="color:green;margin-top:60px;text-align:center">Welcome to User Login</h2>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div id="login-div" style="background-color:lavender;border:5px solid ridge;">
+
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td class="form-control-label" style="text-align:right;font-size:large;font-weight:bold">
+                                @Html.LabelFor(model => model.UserEmail)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.UserEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-control-label" style="text-align:right;font-size:large;font-weight:bold">
+                                @Html.LabelFor(model => model.UserPassword)
+                            </td>
+                            <td>
+                                @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            @Html.ValidationMessageFor(model => model.UserPassword)
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <input type="submit" class"btn btn-success" name="name" value="Login" id="Submit" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <label id="lbl_AuthError" class="field-Validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                            </td>
+
+
+                        </tr>
+                    </table>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
